@@ -1,38 +1,26 @@
 {
-  "name": "naver-api-extension",
+  "name": "korean-dictionary-extension",
   "version": "1.0.0",
-  "description": "네이버 API를 사용하여 검색, 데이터랩, 캘린더 등 다양한 네이버 서비스 데이터를 가져올 수 있는 Claude Desktop 확장 프로그램",
+  "description": "표준국어대사전 오픈 API를 사용하여 한국어 단어를 검색하고 조회하는 Claude Desktop 확장 프로그램",
   "main": "server/index.js",
-  "type": "module",
   "scripts": {
     "start": "node server/index.js",
-    "dev": "node --watch server/index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "naver",
-    "api",
-    "search",
-    "datalab",
-    "calendar",
     "korean",
+    "dictionary",
     "mcp",
-    "claude"
+    "claude",
+    "desktop",
+    "extension"
   ],
-  "author": "AI Assistant",
+  "author": "Korean Dictionary Extension Developer",
   "license": "MIT",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^0.6.0",
-    "axios": "^1.7.9"
+    "@modelcontextprotocol/sdk": "^0.5.0"
   },
   "engines": {
-    "node": ">=16.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/example/naver-api-extension"
-  },
-  "bugs": {
-    "url": "https://github.com/example/naver-api-extension/issues"
-  },
-  "homepage": "https://developers.naver.com/main/"
+    "node": ">=14.0.0"
+  }
 } 

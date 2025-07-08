@@ -1,17 +1,22 @@
 {
-  "dxt_version": "0.1.0",
-  "name": "naver-api-extension",
-  "display_name": "네이버 API 확장 프로그램",
+  "dxt_version": "0.1",
+  "name": "korean-dictionary",
+  "display_name": "표준국어대사전",
   "version": "1.0.0",
-  "description": "네이버 API를 사용하여 검색, 데이터랩, 캘린더 등 다양한 네이버 서비스 데이터를 가져올 수 있는 확장 프로그램",
-  "long_description": "이 확장 프로그램은 네이버 API를 통해 다양한 네이버 서비스의 데이터를 Claude에서 직접 사용할 수 있게 해줍니다. 검색 API, 데이터랩 API, 캘린더 API 등을 지원하며, 네이버 아이디로 로그인 기능도 포함되어 있습니다.",
+  "description": "표준국어대사전 오픈 API를 사용하여 한국어 단어의 뜻을 검색하고 조회할 수 있는 확장 프로그램입니다.",
+  "long_description": "이 확장 프로그램은 국립국어원의 표준국어대사전 오픈 API를 활용하여 한국어 단어의 정의, 예문, 어원 등을 검색하고 상세 정보를 조회할 수 있습니다. 학습, 연구, 번역 작업에 유용한 도구입니다.",
   "author": {
-    "name": "AI Assistant",
-    "email": "assistant@example.com"
+    "name": "Korean Dictionary Extension Developer",
+    "email": "developer@example.com"
   },
-  "homepage": "https://developers.naver.com/main/",
-  "documentation": "https://developers.naver.com/docs/common/openapiguide/",
-  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/example/korean-dictionary-extension"
+  },
+  "homepage": "https://stdict.korean.go.kr",
+  "documentation": "https://stdict.korean.go.kr/openapi/openApiInfo.do",
+  "keywords": ["dictionary", "korean", "language", "search", "reference"],
+  "license": "MIT",
   "server": {
     "type": "node",
     "entry_point": "server/index.js",
@@ -19,92 +24,31 @@
       "command": "node",
       "args": ["${__dirname}/server/index.js"],
       "env": {
-        "NAVER_CLIENT_ID": "${user_config.client_id}",
-        "NAVER_CLIENT_SECRET": "${user_config.client_secret}"
-      },
-      "timeout": 30000
+        "API_KEY": "${user_config.api_key}"
+      }
     }
   },
   "tools": [
     {
-      "name": "search_blog",
-      "description": "네이버 블로그 검색"
+      "name": "search_dictionary",
+      "description": "표준국어대사전에서 단어를 검색합니다"
     },
     {
-      "name": "search_news",
-      "description": "네이버 뉴스 검색"
-    },
-    {
-      "name": "search_book",
-      "description": "네이버 책 검색"
-    },
-    {
-      "name": "search_encyclopedia",
-      "description": "네이버 백과사전 검색"
-    },
-    {
-      "name": "search_movie",
-      "description": "네이버 영화 검색"
-    },
-    {
-      "name": "search_webkr",
-      "description": "네이버 웹문서 검색"
-    },
-    {
-      "name": "search_image",
-      "description": "네이버 이미지 검색"
-    },
-    {
-      "name": "search_shop",
-      "description": "네이버 쇼핑 검색"
-    },
-    {
-      "name": "test_api_connection",
-      "description": "네이버 API 연결 상태 테스트"
-    },
-    {
-      "name": "get_datalab_guide",
-      "description": "데이터랩 API 사용 가이드"
-    },
-    {
-      "name": "datalab_search_trend",
-      "description": "데이터랩 검색어 트렌드 조회"
-    },
-    {
-      "name": "datalab_shopping_insight",
-      "description": "데이터랩 쇼핑 인사이트 조회"
-    },
-    {
-      "name": "get_user_profile",
-      "description": "네이버 아이디로 로그인 사용자 프로필 조회"
-    },
-    {
-      "name": "create_calendar_schedule",
-      "description": "네이버 캘린더 일정 생성"
+      "name": "get_word_details",
+      "description": "특정 단어의 상세 정보를 조회합니다"
     }
   ],
-  "tools_generated": true,
-  "keywords": ["naver", "api", "search", "datalab", "calendar", "korean"],
-  "license": "MIT",
   "compatibility": {
-    "claude_desktop": ">=0.1.0",
     "platforms": ["darwin", "win32", "linux"],
     "runtimes": {
-      "node": ">=16.0.0"
+      "node": ">=14.0.0"
     }
   },
   "user_config": {
-    "client_id": {
+    "api_key": {
       "type": "string",
-      "title": "네이버 클라이언트 ID",
-      "description": "네이버 개발자 센터에서 발급받은 클라이언트 ID",
-      "sensitive": true,
-      "required": true
-    },
-    "client_secret": {
-      "type": "string",
-      "title": "네이버 클라이언트 시크릿",
-      "description": "네이버 개발자 센터에서 발급받은 클라이언트 시크릿",
+      "title": "API 키",
+      "description": "표준국어대사전 오픈 API 키를 입력하세요",
       "sensitive": true,
       "required": true
     }
